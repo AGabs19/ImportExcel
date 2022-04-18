@@ -61,9 +61,9 @@
         
     })
 
-   $(function(){
+   $(function(){ //Comandos do meu botão de selecionar arquivos
        $("#Select").on("click", function(){
-           var fileExtension = ["xls", "xlsx"];
+           var fileExtension = ["xls", "xlsx"]; //Somente arquivos xls e xlsx
            var filename = $("fileSelect").val();
            if(filename.length ==0){
                alert("Por favor, selecione um arquivo.");
@@ -72,7 +72,7 @@
            else{
                var extension = filename.replace(/^.*\./,'');
                if ($.inArray(extension, fileExtension)== -1){
-                   alert("Por favor, selecione apenas arquivos Excel.");
+                   alert("Por favor, selecione apenas arquivos Excel."); //Caso selecione outro tipo de arquivo é para aparecer isso
                    return false;
                }
            }
@@ -82,25 +82,23 @@
    $("#btnDownloadExcel").on("click", function(){
        var reader = new FileReader();
             reader.onload = function(){ //Ajustar aqui, onde vai ser feito a leitura do arquivo 
-                console.log(ReadXls.target.result) //Quero que apareça na tabela da minha tela
+                console.log(Planilha.target.result) //Quero que apareça na tabela da minha tela
             };
             reader.readAsText(file)
 
    });
 
-     $("#btnSalvar").on("click", function(){
+     $("#btnSalvar").on("click", function(){ //Configuração do meu botão salvar, quando aperta ele quero que salve no meu banco de dados com base dos comandos que eu coloquei no arquivo Planilha!
          var fileExtension = ["xls", "xlsx"];
          var filename = $("#fileSelect").val();
          var files = fileSelect.files;
          if(filename.lnegth ==0){ 
-            var //conexao = AppContext() // corrigir dnv
-            ajaxRequest = $.ajax({
+            var ajaxRequest = $.ajax({
                 type:"POST", 
                 url:"C:\Users\anaga\OneDrive\Área de Trabalho\Projetos\ExcelSQL\ImportExcel\ImportExcel\Planilha.cs",
                 data:"", 
                 dataType: "json",
                 beforeSend: function(){
-                //conexao.SaveChanges()
                 },
             });
 
@@ -116,82 +114,4 @@
                alert("Nenhum dado encontrado"); //Quando não localizar
          }
   });
-    
- 
-    
-   /* $(document).ready(function(){
-        init();
-    });
-
-    function init(file){
-        
-        $("#Select").on("click", function)(){
-            var fileExtension = ["xls", "xlsx"];
-            var filename = $("#fileSelect").val("");
-            if (filename.legth ==0)
-            alert("Por favor, selecione seu Arquivo.");
-            return false;
-       
-
-            var reader = new FileReader();
-            reader.onload = function(ReadXls){ //Ajustar aqui, onde vai ser feito a leitura do arquivo
-                console.log(ReadXls.target.result)
-            };
-            reader.readAsText(file)
-
-            //Falta ligar a tabela
-
-        $("#btnDownloadExcel").click(function(){
-            ReadXls();
-         }); //Falta mandar o comando Baixar meu arquivo e assim que finalizar aparecer na minha tela
-    
-        $("#btnSalvar").click(function(){
-            Salvar();
-        }); //Quando eu clicar em salvar quero que salve as atualizações no meu banco de dados, então falta eu passar a conexão para ele
-
-           
-    });
-    function Salvar(){
-        if(ReadXls){ //Var conexao???
-            var ajaxRequest = $.ajax({
-                type:"POST", //Corrigir
-                url:"C:\Users\anaga\OneDrive\Área de Trabalho\Projetos\ExcelSQL\ImportExcel\ImportExcel\Controllers\HomeController.cs",
-                Host: localhost7004
-                data:{Planilha : ReadXls}, //Corrigir esse ponto
-                dataType: "json",
-                beforeSend: function(){
-
-                },
-            });
-
-            ajaxRequest.done(function(data){ //Feito
-                alert("Salvo com sucesso!");
-            });
-
-            ajaxRequest.fail(function(jdxhr){ //Erro
-                alert("Ocorreu um erro");
-            });
-        }
-         else {
-               alert("Nenhum dado encontrado"); //Quando não localizar
-         }
-   }
-
-   function NewReadXls({
-       var ReadXls ={
-           Id:0,
-           Nome:"",
-           Sobrenome: "",
-           CPF:0,
-           Numero:0,
-           Descricao:"",
-           Longadouro:"",
-           Numero:0,
-           CEP:0
-
-       }
-       
-
-   })
-}*/
 </script>

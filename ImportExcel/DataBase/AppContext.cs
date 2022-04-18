@@ -8,22 +8,22 @@ namespace ImportExcel.DataBase
     {
         public AppContext(DbContextOptions<AppContext>options) : base(options)
         {
-
+            //Conexão com meu Banco de Dados, ligada ao meu Program.cs e appsettings.json
         }
         public AppContext()
         {
 
         }
 
-        public DbSet<Autorizacao>? Autorizacao{ get; set; }
-        public DbSet<Cargo>? Cargo { get; set; }
-        public DbSet<Contrato>? Contrato { get; set; }
-        public DbSet<Endereco>? Endereco { get; set; }
-        public DbSet<Ferias>? Ferias { get; set; }
-        public DbSet<Funcionario>? Funcionario { get; set; }
-        public DbSet<Historico>? Historico { get; set; }
-        public DbSet<PeriodoAquisitivo>? PeriodoAquisitivo { get; set; }
-        public DbSet<Telefone>? Telefone { get; set; }
+        public DbSet<Autorizacao> Autorizacao{ get; set; }
+        public DbSet<Cargo> Cargo { get; set; }
+        public DbSet<Contrato> Contrato { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
+        public DbSet<Ferias> Ferias { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<Historico> Historico { get; set; }
+        public DbSet<PeriodoAquisitivo> PeriodoAquisitivo { get; set; }
+        public DbSet<Telefone> Telefone { get; set; }
        
 
 
