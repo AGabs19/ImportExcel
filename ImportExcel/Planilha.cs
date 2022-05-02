@@ -1,4 +1,6 @@
-﻿/*using DocumentFormat.OpenXml.Office2010.Excel;
+﻿//FORMA DE LEITURA COM EPPLUS, conexao com o banco, uso de For e FirstOurDefault
+
+/*using DocumentFormat.OpenXml.Office2010.Excel;
 using ImportExcel.Models;
 using OfficeOpenXml;
 using AppContext = ImportExcel.DataBase.AppContext;
