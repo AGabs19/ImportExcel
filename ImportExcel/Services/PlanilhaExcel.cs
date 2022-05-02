@@ -9,7 +9,7 @@ namespace ImportExcel.Services
     {
         private readonly AppContext conexao;
 
-        public PlanilhaExcel(AppContext conexao)
+        public PlanilhaExcel(AppContext conexao) //To chamando minha conexao com o banco de dados
         {
             this.conexao = conexao;
         }
@@ -20,7 +20,7 @@ namespace ImportExcel.Services
             //Organizei como eu quero que meu arquivo Excel seja lido 
             var planilhaExcel = new ExcelMapper(arquivo.OpenReadStream()).Fetch<ExcelModel>(); //Usando o Excel Mapper
 
-            foreach (var linha in planilhaExcel)
+            foreach (var linha in planilhaExcel) //Optei por usar o FirstOurDefault
             {
                 Funcionario funcionario = this.conexao.Funcionario.FirstOrDefault(x => x.CPF == linha.CPF);
                 if (funcionario == null)
@@ -79,7 +79,7 @@ namespace ImportExcel.Services
             {
                 return "o arquivo não possui dados";
             }
-
+            //Quero acrescentar a validação dos dados preciso fazer alterções!
             return "ok";
         }
     }

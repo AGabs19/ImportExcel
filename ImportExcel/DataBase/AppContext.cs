@@ -10,7 +10,7 @@ namespace ImportExcel.DataBase
         {
             //Conexão com meu Banco de Dados, ligada ao meu Program.cs e appsettings.json
         }
-        public AppContext()
+        public AppContext() //Aqui está ligado a meu Planilha Excel, services
         {
 
         }
@@ -24,7 +24,7 @@ namespace ImportExcel.DataBase
         public DbSet<PeriodoAquisitivo> PeriodoAquisitivo { get; set; }
         public DbSet<Telefone> Telefone { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //Aqui eu to configurando para criar meus ID
         {
             modelBuilder.Entity<Autorizacao>()
            .Property(x => x.Id)

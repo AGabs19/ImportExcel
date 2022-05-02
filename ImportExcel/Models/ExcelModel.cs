@@ -1,6 +1,6 @@
 ﻿namespace ImportExcel.Models
 {
-    public class ExcelModel
+    public class ExcelModel //É o que eu quero que apareça na tela de leitura da page!
     {
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
