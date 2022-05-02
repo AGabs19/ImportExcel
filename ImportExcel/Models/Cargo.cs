@@ -9,7 +9,8 @@ namespace ImportExcel.Models
     public class Cargo
     {
         [Key()]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public String? Tipo { get; set; }
     }
 }
+

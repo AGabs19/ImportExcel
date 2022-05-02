@@ -9,10 +9,10 @@ namespace ImportExcel.Models
     public class Endereco
     {
         [Key()]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string? Longadouro { get; set; }
-        public int Numero { get; set; }
-        public int CEP { get; set; }
+        public long NumeroCasa { get; set; }
+        public long CEP { get; set; }
         public string? Complemento { get; set; }
 
     }

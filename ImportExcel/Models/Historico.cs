@@ -9,8 +9,8 @@ namespace ImportExcel.Models
     public class Historico
     {
         [Key()]
-        public int Id { get; set; }
-        public int QuantidadeDeDias { get; set; }
+        public long Id { get; set; }
+        public long QuantidadeDeDias { get; set; }
         public bool Venda { get; set; }
         public DateTime UltimoPeriodo { get; set; }
     }

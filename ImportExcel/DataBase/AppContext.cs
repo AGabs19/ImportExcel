@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ImportExcel.DataBase
 {
 
-    public class AppContext : DbContext //Ele vai encapsular
+    public partial class AppContext : DbContext //Ele vai encapsular
     {
         public AppContext(DbContextOptions<AppContext>options) : base(options)
         {
@@ -14,7 +14,6 @@ namespace ImportExcel.DataBase
         {
 
         }
-
         public DbSet<Autorizacao> Autorizacao{ get; set; }
         public DbSet<Cargo> Cargo { get; set; }
         public DbSet<Contrato> Contrato { get; set; }
@@ -24,16 +23,47 @@ namespace ImportExcel.DataBase
         public DbSet<Historico> Historico { get; set; }
         public DbSet<PeriodoAquisitivo> PeriodoAquisitivo { get; set; }
         public DbSet<Telefone> Telefone { get; set; }
-       
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Autorizacao>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
 
+            modelBuilder.Entity<Cargo>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Contrato>()
+            .Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Endereco>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Ferias>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Funcionario>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Historico>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<PeriodoAquisitivo>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Telefone>()
+           .Property(x => x.Id)
+           .ValueGeneratedOnAdd();
+
+            OnModelCreatingPartial(modelBuilder);
+        }
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-/* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       {
-           IConfiguration configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsetting.json", false, true)
-                .Build();
-           optionsBuilder.UseSqlServer(configuration.GetConnectionString("FeriasApp"));
-       }*/

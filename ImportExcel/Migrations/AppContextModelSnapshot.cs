@@ -18,24 +18,24 @@ namespace ImportExcel.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("ImportExcel.Models.Autorizacao", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("IdGerente1")
-                        .HasColumnType("int");
+                    b.Property<long>("IdGerente1")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("IdGerente2")
-                        .HasColumnType("int");
+                    b.Property<long>("IdGerente2")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ObservacaoFuncionario")
                         .HasColumnType("nvarchar(max)");
@@ -59,11 +59,11 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Cargo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("Tipo")
                         .HasColumnType("nvarchar(max)");
@@ -75,14 +75,14 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Contrato", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("CargoId")
-                        .HasColumnType("int");
+                    b.Property<long?>("CargoId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataFim")
                         .HasColumnType("datetime2");
@@ -90,8 +90,8 @@ namespace ImportExcel.Migrations
                     b.Property<DateTime>("DataInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FuncionarioId")
-                        .HasColumnType("int");
+                    b.Property<long?>("FuncionarioId")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("Salario")
                         .HasColumnType("float");
@@ -107,14 +107,14 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Endereco", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("CEP")
-                        .HasColumnType("int");
+                    b.Property<long>("CEP")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Complemento")
                         .HasColumnType("nvarchar(max)");
@@ -122,8 +122,8 @@ namespace ImportExcel.Migrations
                     b.Property<string>("Longadouro")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Numero")
-                        .HasColumnType("int");
+                    b.Property<long>("NumeroCasa")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -132,11 +132,11 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Ferias", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<bool>("AdiantamentoDecimoTerceiro")
                         .HasColumnType("bit");
@@ -147,11 +147,8 @@ namespace ImportExcel.Migrations
                     b.Property<bool>("AutorizacaoGerente2")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("AutorizacaoId")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("AutorizacaoId1")
-                        .HasColumnType("int");
+                    b.Property<long?>("AutorizacaoId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DataFim")
                         .HasColumnType("datetime2");
@@ -159,42 +156,36 @@ namespace ImportExcel.Migrations
                     b.Property<DateTime>("DataInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("HistoricoId")
-                        .HasColumnType("datetime2");
+                    b.Property<long?>("HistoricoId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("HistoricoId1")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PeriodoAquisitivoId")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("PeriodoAquisitivoId1")
-                        .HasColumnType("int");
+                    b.Property<long?>("PeriodoAquisitivoId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AutorizacaoId1");
+                    b.HasIndex("AutorizacaoId");
 
-                    b.HasIndex("HistoricoId1");
+                    b.HasIndex("HistoricoId");
 
-                    b.HasIndex("PeriodoAquisitivoId1");
+                    b.HasIndex("PeriodoAquisitivoId");
 
                     b.ToTable("Ferias");
                 });
 
             modelBuilder.Entity("ImportExcel.Models.Funcionario", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("CPF")
-                        .HasColumnType("int");
+                    b.Property<long>("CPF")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("int");
+                    b.Property<long?>("EnderecoId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
@@ -202,8 +193,8 @@ namespace ImportExcel.Migrations
                     b.Property<string>("Sobrenome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TelefoneId")
-                        .HasColumnType("int");
+                    b.Property<long?>("TelefoneId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -216,14 +207,14 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Historico", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("QuantidadeDeDias")
-                        .HasColumnType("int");
+                    b.Property<long>("QuantidadeDeDias")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("UltimoPeriodo")
                         .HasColumnType("datetime2");
@@ -238,11 +229,11 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.PeriodoAquisitivo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DataDaContratacao")
                         .HasColumnType("datetime2");
@@ -257,17 +248,17 @@ namespace ImportExcel.Migrations
 
             modelBuilder.Entity("ImportExcel.Models.Telefone", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Numero")
-                        .HasColumnType("int");
+                    b.Property<long>("Numero")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -278,15 +269,11 @@ namespace ImportExcel.Migrations
                 {
                     b.HasOne("ImportExcel.Models.Cargo", "Cargo")
                         .WithMany()
-                        .HasForeignKey("CargoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CargoId");
 
                     b.HasOne("ImportExcel.Models.Funcionario", "Funcionario")
                         .WithMany()
-                        .HasForeignKey("FuncionarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FuncionarioId");
 
                     b.Navigation("Cargo");
 
@@ -297,15 +284,15 @@ namespace ImportExcel.Migrations
                 {
                     b.HasOne("ImportExcel.Models.Autorizacao", "Autorizacao")
                         .WithMany()
-                        .HasForeignKey("AutorizacaoId1");
+                        .HasForeignKey("AutorizacaoId");
 
                     b.HasOne("ImportExcel.Models.Historico", "Historico")
                         .WithMany()
-                        .HasForeignKey("HistoricoId1");
+                        .HasForeignKey("HistoricoId");
 
                     b.HasOne("ImportExcel.Models.PeriodoAquisitivo", "PeriodoAquisitivo")
                         .WithMany()
-                        .HasForeignKey("PeriodoAquisitivoId1");
+                        .HasForeignKey("PeriodoAquisitivoId");
 
                     b.Navigation("Autorizacao");
 
@@ -318,15 +305,11 @@ namespace ImportExcel.Migrations
                 {
                     b.HasOne("ImportExcel.Models.Endereco", "Endereco")
                         .WithMany()
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EnderecoId");
 
                     b.HasOne("ImportExcel.Models.Telefone", "Telefone")
                         .WithMany()
-                        .HasForeignKey("TelefoneId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TelefoneId");
 
                     b.Navigation("Endereco");
 

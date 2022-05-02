@@ -9,9 +9,10 @@ namespace ImportExcel.Models
     public class Telefone
     {
         [Key()]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string? Descricao { get; set; }
-        public int Numero { get; set; }
+        public long Numero { get; set; }
     }
 }
+
 

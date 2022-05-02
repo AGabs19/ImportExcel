@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ImportExcel.Migrations
 {
-    public partial class ImportExcel : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,13 +13,13 @@ namespace ImportExcel.Migrations
                 name: "Autorizacao",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ObservacaoFuncionario = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdGerente1 = table.Column<int>(type: "int", nullable: false),
+                    IdGerente1 = table.Column<long>(type: "bigint", nullable: false),
                     ObservacaoGerente1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StatusGerente1 = table.Column<bool>(type: "bit", nullable: false),
-                    IdGerente2 = table.Column<int>(type: "int", nullable: false),
+                    IdGerente2 = table.Column<long>(type: "bigint", nullable: false),
                     ObservacaoGerente2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StatusGerente2 = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -32,7 +32,7 @@ namespace ImportExcel.Migrations
                 name: "Cargo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -45,11 +45,11 @@ namespace ImportExcel.Migrations
                 name: "Endereco",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Longadouro = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Numero = table.Column<int>(type: "int", nullable: false),
-                    CEP = table.Column<int>(type: "int", nullable: false),
+                    NumeroCasa = table.Column<long>(type: "bigint", nullable: false),
+                    CEP = table.Column<long>(type: "bigint", nullable: false),
                     Complemento = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -61,9 +61,9 @@ namespace ImportExcel.Migrations
                 name: "Historico",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    QuantidadeDeDias = table.Column<int>(type: "int", nullable: false),
+                    QuantidadeDeDias = table.Column<long>(type: "bigint", nullable: false),
                     Venda = table.Column<bool>(type: "bit", nullable: false),
                     UltimoPeriodo = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -76,7 +76,7 @@ namespace ImportExcel.Migrations
                 name: "PeriodoAquisitivo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataDaContratacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UltimoPeriodo = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -90,10 +90,10 @@ namespace ImportExcel.Migrations
                 name: "Telefone",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Numero = table.Column<int>(type: "int", nullable: false)
+                    Numero = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,36 +104,33 @@ namespace ImportExcel.Migrations
                 name: "Ferias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AutorizacaoId1 = table.Column<int>(type: "int", nullable: true),
-                    AutorizacaoId = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AutorizacaoId = table.Column<long>(type: "bigint", nullable: true),
                     AdiantamentoDecimoTerceiro = table.Column<bool>(type: "bit", nullable: false),
-                    HistoricoId1 = table.Column<int>(type: "int", nullable: true),
-                    HistoricoId = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HistoricoId = table.Column<long>(type: "bigint", nullable: true),
                     DataInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataFim = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AutorizacaoGerente1 = table.Column<bool>(type: "bit", nullable: false),
                     AutorizacaoGerente2 = table.Column<bool>(type: "bit", nullable: false),
-                    PeriodoAquisitivoId1 = table.Column<int>(type: "int", nullable: true),
-                    PeriodoAquisitivoId = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PeriodoAquisitivoId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ferias", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ferias_Autorizacao_AutorizacaoId1",
-                        column: x => x.AutorizacaoId1,
+                        name: "FK_Ferias_Autorizacao_AutorizacaoId",
+                        column: x => x.AutorizacaoId,
                         principalTable: "Autorizacao",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Ferias_Historico_HistoricoId1",
-                        column: x => x.HistoricoId1,
+                        name: "FK_Ferias_Historico_HistoricoId",
+                        column: x => x.HistoricoId,
                         principalTable: "Historico",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Ferias_PeriodoAquisitivo_PeriodoAquisitivoId1",
-                        column: x => x.PeriodoAquisitivoId1,
+                        name: "FK_Ferias_PeriodoAquisitivo_PeriodoAquisitivoId",
+                        column: x => x.PeriodoAquisitivoId,
                         principalTable: "PeriodoAquisitivo",
                         principalColumn: "Id");
                 });
@@ -142,13 +139,13 @@ namespace ImportExcel.Migrations
                 name: "Funcionario",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CPF = table.Column<int>(type: "int", nullable: false),
-                    TelefoneId = table.Column<int>(type: "int", nullable: false),
-                    EnderecoId = table.Column<int>(type: "int", nullable: false)
+                    CPF = table.Column<long>(type: "bigint", nullable: false),
+                    TelefoneId = table.Column<long>(type: "bigint", nullable: true),
+                    EnderecoId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -157,27 +154,25 @@ namespace ImportExcel.Migrations
                         name: "FK_Funcionario_Endereco_EnderecoId",
                         column: x => x.EnderecoId,
                         principalTable: "Endereco",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Funcionario_Telefone_TelefoneId",
                         column: x => x.TelefoneId,
                         principalTable: "Telefone",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Contrato",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DataInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataFim = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Salario = table.Column<double>(type: "float", nullable: false),
-                    CargoId = table.Column<int>(type: "int", nullable: false),
-                    FuncionarioId = table.Column<int>(type: "int", nullable: false)
+                    CargoId = table.Column<long>(type: "bigint", nullable: true),
+                    FuncionarioId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,14 +181,12 @@ namespace ImportExcel.Migrations
                         name: "FK_Contrato_Cargo_CargoId",
                         column: x => x.CargoId,
                         principalTable: "Cargo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Contrato_Funcionario_FuncionarioId",
                         column: x => x.FuncionarioId,
                         principalTable: "Funcionario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -207,19 +200,19 @@ namespace ImportExcel.Migrations
                 column: "FuncionarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ferias_AutorizacaoId1",
+                name: "IX_Ferias_AutorizacaoId",
                 table: "Ferias",
-                column: "AutorizacaoId1");
+                column: "AutorizacaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ferias_HistoricoId1",
+                name: "IX_Ferias_HistoricoId",
                 table: "Ferias",
-                column: "HistoricoId1");
+                column: "HistoricoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ferias_PeriodoAquisitivoId1",
+                name: "IX_Ferias_PeriodoAquisitivoId",
                 table: "Ferias",
-                column: "PeriodoAquisitivoId1");
+                column: "PeriodoAquisitivoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Funcionario_EnderecoId",

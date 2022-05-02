@@ -1,117 +1,36 @@
 ﻿@page
-@model IndexModel
+@using ImportExcel.Controllers
+@using static Microsoft.EntityFrameworkCore.DbLoggerCategory
+@model ImportController
+
 @{
-    ViewData["Title"] = "FeriasApp";
+    ViewData["Title"] = "FeriasPage";
 }
-<link rel="stylesheet" type="text/css" href="~/js/site.js" />
-<link rel="stylesheet" type="text/css" href="~/css/site.css" />
-
-
-<div class="text-center">
+< div class="text-center">
     <h1 class="display-4">Bem Vindo</h1>
     <p>Importando uma Tabela Excel para um banco de dados!</p>
     <p>Fique a vontade sempre que quiser fazer uma atualização!</p>
+ </div>
 
-   <button id="btnDownloadExcel" class="btn btn-primary">DownloadExcel</button> 
-   <br/> 
-
-   <input type ="File" id="Select" accept=".xls,.xlxs" style="float:left;"/>
-
-   <button id="btnSalvar" class="btn-primary">Salvar</button>
-
-</div>
-
-<style>
-  table{
-      font-family: arial, sans-serif;
-      border-collapse: collapse;     
-      width:100%;}
-
-   th{
-       border: 1px solid #ADD8E6;
-       text-align: left;
-       padding: 8px;}
-   
-   tr:nth-child(even) {
-  background-color: #ADD8E6;}
-
-</style>
-
-<table id="FeriasApp">
-    <tr>
-        <th>Funcionario</th>
-        <th>Telefone</th>
-        <th>Endereco</th>
-        <th>Cargo</th>
-        <th>Contrato</th>
-        <th>Ferias</th>
-        <th>Autorizacao</th>
-        <th>PeriodoAquisitivo</th>
-        <th>Historico</th>
-    </tr>
-    <thead></thead>
-    <tbody></tbody>
+ <br /> 
+<table>
+    <thread>
+        <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>CPF</th>
+            <th>Numero</th>
+            <th>Descricao</th>
+            <th>Longadouro</th>
+            <th>NumeroCasa</th>
+            <th>CEP</th>
+            <th>Complemento</th>
+            <th>Cargo</th>
+        </tr>
+    </thread>
+    <tbody>
+           
+        </tbody>
 </table>
 
-<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"> </script>
-
-<script type = "text/javascript">
-    $(document).ready(function(){
-        var importaDados = new Planilha()//
-        
-    })
-
-   $(function(){ //Comandos do meu botão de selecionar arquivos
-       $("#Select").on("click", function(){
-           var fileExtension = ["xls", "xlsx"]; //Somente arquivos xls e xlsx
-           var filename = $("fileSelect").val();
-           if(filename.length ==0){
-               alert("Por favor, selecione um arquivo.");
-               return false;
-           }
-           else{
-               var extension = filename.replace(/^.*\./,'');
-               if ($.inArray(extension, fileExtension)== -1){
-                   alert("Por favor, selecione apenas arquivos Excel."); //Caso selecione outro tipo de arquivo é para aparecer isso
-                   return false;
-               }
-           }
-
-       });
-   });
-   $("#btnDownloadExcel").on("click", function(){
-       var reader = new FileReader();
-            reader.onload = function(){ //Ajustar aqui, onde vai ser feito a leitura do arquivo 
-                console.log(Planilha.target.result) //Quero que apareça na tabela da minha tela
-            };
-            reader.readAsText(file)
-
-   });
-
-     $("#btnSalvar").on("click", function(){ //Configuração do meu botão salvar, quando aperta ele quero que salve no meu banco de dados com base dos comandos que eu coloquei no arquivo Planilha!
-         var fileExtension = ["xls", "xlsx"];
-         var filename = $("#fileSelect").val();
-         var files = fileSelect.files;
-         if(filename.lnegth ==0){ 
-            var ajaxRequest = $.ajax({
-                type:"POST", 
-                url:"C:\Users\anaga\OneDrive\Área de Trabalho\Projetos\ExcelSQL\ImportExcel\ImportExcel\Planilha.cs",
-                data:"", 
-                dataType: "json",
-                beforeSend: function(){
-                },
-            });
-
-            ajaxRequest.done(function(data){ //Feito
-                alert("Salvo com sucesso!");
-            });
-
-            ajaxRequest.fail(function(jdxhr){ //Erro
-                alert("Ocorreu um erro");
-            });
-      
-         else {
-               alert("Nenhum dado encontrado"); //Quando não localizar
-         }
-  });
-</script>
+ 

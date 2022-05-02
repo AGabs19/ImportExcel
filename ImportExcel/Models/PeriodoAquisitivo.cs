@@ -9,8 +9,9 @@ namespace ImportExcel.Models
     public class PeriodoAquisitivo
     {
         [Key()]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime DataDaContratacao { get; set; }
         public DateTime UltimoPeriodo { get; set; }
     }
 }
+

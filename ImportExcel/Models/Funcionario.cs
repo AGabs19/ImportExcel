@@ -9,14 +9,14 @@ namespace ImportExcel.Models
 	public class Funcionario
 	{
 		[Key()]
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public string? Nome { get; set; }
 		public string? Sobrenome { get; set; }
-		public int CPF { get; set; }
+		public long CPF { get; set; }
 		public virtual Telefone? Telefone { get; set; }
-		public int TelefoneId { get; set; }
+		//public long TelefoneId { get; set; }
 		public virtual Endereco? Endereco { get; set; }
-		public int EnderecoId { get; set; }
+		//public long EnderecoId { get; set; }
 	}
 }
 
