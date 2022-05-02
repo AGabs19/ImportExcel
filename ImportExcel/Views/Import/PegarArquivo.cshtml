@@ -1,0 +1,43 @@
+﻿@page
+@model IEnumerable<ImportExcel.Models.ExcelModel>
+@{
+    ViewData["Title"] = "PegarArquivo";
+}
+<table class="Tabela">
+    <thread>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.Sobrenome)</th>
+            <th>@Html.DisplayNameFor(model => model.CPF)</th>
+            <th>@Html.DisplayNameFor(model => model.Numero)</th>
+            <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+            <th>@Html.DisplayNameFor(model => model.Longadouro)</th>
+            <th>@Html.DisplayNameFor(model => model.CEP)</th>
+            <th>@Html.DisplayNameFor(model => model.NumeroCasa)</th>
+            <th>@Html.DisplayNameFor(model => model.Complemento)</th>
+            <th>@Html.DisplayNameFor(model => model.Cargo)</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach(var lista in Model)
+        {
+            <tr>
+               <td>@Html.DisplayNameFor(modelLista => lista.Nome)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Sobrenome)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.CPF)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Numero)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Descricao)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Longadouro)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.CEP)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.NumeroCasa)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Complemento)</td>
+               <td>@Html.DisplayNameFor(modelLista => lista.Cargo)</td>
+               <td>
+                   <a asp-action="Editar" asp-route="@lista.CPF">Editar</a>
+                   <a asp-action="Datalhes" asp-route="@lista.CPF">Detalhes</a>
+                   <a asp-action="Deletar" asp-route="@lista.CPF">Deletar</a>
+               </td>
+            </tr>
+        }
+    </tbody>
+</table>

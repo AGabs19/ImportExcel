@@ -7,7 +7,7 @@ using ImportExcel.Models;
 using OfficeOpenXml;
 using System.IO;
 
-namespace ImportExcel.Pages
+namespace ImportExcel.Views
 {
     public class IndexModel : Controller 
     {
